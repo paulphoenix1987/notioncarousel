@@ -13,6 +13,13 @@
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         margin: auto;
+        text-align: center;
+    }
+
+    .description {
+        font-size: 18px;
+        margin-bottom: 10px;
+        font-weight: bold;
     }
 
     .carousel {
@@ -45,13 +52,14 @@
 <body>
 
 <div class="carousel-container">
+    <div class="description" id="description"><a id="description-link" href="#" target="_blank">Slide 1 Description</a></div>
     <div class="carousel">
         <img src="https://i.imgur.com/amh6gt5.jpeg" alt="Slide 1">
         <img src="https://i.imgur.com/QHWhTQq.png" alt="Slide 2">
         <img src="https://i.imgur.com/1ncXfsW.png" alt="Slide 3">
     </div>
-    <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
-    <button class="next" onclick="moveSlide(1)">&#10095;</button>
+    <button class="prev" id="prevButton">&#10094;</button>
+    <button class="next" id="nextButton">&#10095;</button>
 </div>
 
 <script>
@@ -59,16 +67,38 @@
     const carousel = document.querySelector('.carousel');
     const slides = document.querySelectorAll('.carousel img');
     const totalSlides = slides.length;
+    const description = document.getElementById('description-link');
+    const descriptions = [
+        { text: "Sandy's Labubu", url: "https://www.tatlerasia.com/lifestyle/entertainment/labubu-fever-hits-the-philippines" },
+        { text: "Australia building half as many homes for every hour worked.", url: "https://www.theguardian.com/australia-news/2025/feb/17/australia-building-half-as-many-homes-per-hour-worked-compared-to-30-years-ago-productivity-commission-finds" },
+        { text: "CREATE MORE IRR signed, BPOs will be ‘very happy with 50% work from home’.", url: "https://business.inquirer.net/506994/create-more-irr-signed-bpos-will-be-very-happy-with-50-work-from-home-go" }
+    ];
 
     function moveSlide(step) {
         index += step;
         if (index < 0) {
-            index = totalSlides - 1;  // Go to the last image if at the first image
+            index = totalSlides - 1;
         } else if (index >= totalSlides) {
-            index = 0;  // Loop back to the first image
+            index = 0;
         }
-        carousel.style.transform = `translateX(${-index * 100}%)`;
+        updateCarousel();
     }
+
+    function updateCarousel() {
+        carousel.style.transform = `translateX(${-index * 100}%)`;
+        description.textContent = descriptions[index].text;
+        description.href = descriptions[index].url;
+    }
+
+    function autoSlide() {
+        moveSlide(1);
+        setTimeout(autoSlide, 3000);
+    }
+
+    document.getElementById('prevButton').addEventListener('click', () => moveSlide(-1));
+    document.getElementById('nextButton').addEventListener('click', () => moveSlide(1));
+
+    setTimeout(autoSlide, 3000);
 </script>
 
 </body>
