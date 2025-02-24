@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Simple Carousel</title>
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+    body {
+        font-family: 'Poppins', sans-serif;
+    }
+
     .carousel-container {
         width: 100%;
         max-width: 400px;
@@ -27,9 +33,12 @@
         transition: transform 0.5s ease-in-out;
     }
 
+    .carousel a {
+        flex: 0 0 100%;
+    }
+
     .carousel img {
         width: 100%;
-        flex: 0 0 100%;
         border-radius: 10px;
     }
 
@@ -52,11 +61,17 @@
 <body>
 
 <div class="carousel-container">
-    <div class="description" id="description"><a id="description-link" href="#" target="_blank">Slide 1 Description</a></div>
-    <div class="carousel">
-        <img src="https://i.imgur.com/amh6gt5.jpeg" alt="Slide 1">
-        <img src="https://i.imgur.com/QHWhTQq.png" alt="Slide 2">
-        <img src="https://i.imgur.com/1ncXfsW.png" alt="Slide 3">
+    <div class="description" id="description">Slide 1 Description</div>
+    <div class="carousel" id="carousel">
+        <a href="https://www.tatlerasia.com/lifestyle/entertainment/labubu-fever-hits-the-philippines" target="_blank">
+            <img src="https://i.imgur.com/amh6gt5.jpeg" alt="Slide 1">
+        </a>
+        <a href="https://www.theguardian.com/australia-news/2025/feb/17/australia-building-half-as-many-homes-per-hour-worked-compared-to-30-years-ago-productivity-commission-finds" target="_blank">
+            <img src="https://i.imgur.com/QHWhTQq.png" alt="Slide 2">
+        </a>
+        <a href="https://business.inquirer.net/506994/create-more-irr-signed-bpos-will-be-very-happy-with-50-work-from-home-go" target="_blank">
+            <img src="https://i.imgur.com/1ncXfsW.png" alt="Slide 3">
+        </a>
     </div>
     <button class="prev" id="prevButton">&#10094;</button>
     <button class="next" id="nextButton">&#10095;</button>
@@ -64,14 +79,14 @@
 
 <script>
     let index = 0;
-    const carousel = document.querySelector('.carousel');
-    const slides = document.querySelectorAll('.carousel img');
+    const carousel = document.getElementById('carousel');
+    const slides = document.querySelectorAll('.carousel a');
     const totalSlides = slides.length;
-    const description = document.getElementById('description-link');
+    const description = document.getElementById('description');
     const descriptions = [
-        { text: "Sandy's Labubu", url: "https://www.tatlerasia.com/lifestyle/entertainment/labubu-fever-hits-the-philippines" },
-        { text: "Australia building half as many homes for every hour worked.", url: "https://www.theguardian.com/australia-news/2025/feb/17/australia-building-half-as-many-homes-per-hour-worked-compared-to-30-years-ago-productivity-commission-finds" },
-        { text: "CREATE MORE IRR signed, BPOs will be ‘very happy with 50% work from home’.", url: "https://business.inquirer.net/506994/create-more-irr-signed-bpos-will-be-very-happy-with-50-work-from-home-go" }
+        "Sandy's Labubu",
+        "Australia building half as many homes for every hour worked.",
+        "CREATE MORE IRR signed, BPOs will be ‘very happy with 50% work from home’."
     ];
 
     function moveSlide(step) {
@@ -86,8 +101,7 @@
 
     function updateCarousel() {
         carousel.style.transform = `translateX(${-index * 100}%)`;
-        description.textContent = descriptions[index].text;
-        description.href = descriptions[index].url;
+        description.textContent = descriptions[index];
     }
 
     function autoSlide() {
