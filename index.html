@@ -63,14 +63,14 @@
 <div class="carousel-container">
     <div class="description" id="description">Description</div>
     <div class="carousel" id="carousel">
-        <a href="https://www.defence.gov.au/news-events/releases/2025-04-25/anzac-day-2025" target="_blank">
-            <img src="https://live-production.wcms.abc-cdn.net.au/c75b778de4772e6f7cc25c028809a3db?impolicy=wcms_crop_resize&cropH=2339&cropW=3509&xPos=0&yPos=141&width=862&height=575" alt="Slide 1">
+        <a href="https://www.notion.com/releases" target="_blank">
+            <img src="https://images.ctfassets.net/spoqsaf9291f/16utq4qAjrn9mrYiy5NRF8/12fdf31c003763a2d3b19a60eebf686e/Notion_AIFW_WhatsNew_AIMeetingNotes_1200x900_v002.gif" alt="Slide 1">
         </a>
-        <a href="https://www.sbs.com.au/news/article/australias-home-building-headache-why-its-taking-longer-and-costing-more/bo607urut" target="_blank">
-            <img src="https://images.sbs.com.au/dims4/default/66e1fb9/2147483647/strip/true/crop/5568x3132+0+290/resize/1280x720!/quality/90/?url=http%3A%2F%2Fsbs-au-brightspot.s3.amazonaws.com%2F2d%2F8b%2F868573234a80bf090e0bcbceb174%2F20221110001728105866-original.jpg&imwidth=1280" alt="Slide 2">
+        <a href="https://www.tipranks.com/news/company-announcements/australias-construction-index-misses-expectations-again" target="_blank">
+            <img src="https://blog.tipranks.com/wp-content/uploads/2025/05/ChatGPT-Image-May-6-2025-11_12_00-AM-750x406.png" alt="Slide 2">
         </a>
-        <a href="https://www.insideconstruction.com.au/construction-features/company-spotlights/viva-energy-advances-low-carbon-fuels-for-construction/" target="_blank">
-            <img src="https://www.insideconstruction.com.au/wp-content/uploads/2025/03/IMG_Viva-Energy-1-1024x683.jpg" alt="Slide 3">
+        <a href="https://www.realestate.com.au/news/builders-bold-move-to-kickstart-victorias-ailing-construction-sector/" target="_blank">
+            <img src="https://www.realestate.com.au/news-image/v1749063625/news-lifestyle-content-assets/wp-content/production/capi_dc0939ec463f52e1075bca09637cabc4_2fc3371035885d3c3e302505cbad1183.jpeg" alt="Slide 3">
         </a>
     </div>
     <button class="prev" id="prevButton">&#10094;</button>
@@ -84,9 +84,9 @@
     const totalSlides = slides.length;
     const description = document.getElementById('description');
     const descriptions = [
-        "Anzac Day 2025",
-        "Australia's home-building headache: Why it's taking longer and costing more",
-        "Viva Energy advances low-carbon fuels for construction"
+        "Whats New in Notion?",
+        "Australia’s Construction Index Misses Expectations Again",
+        "Builders’ bold move to kickstart Victoria’s ailing construction sector"
     ];
 
     function moveSlide(step) {
@@ -106,7 +106,7 @@
 
     function autoSlide() {
         moveSlide(1);
-        setTimeout(autoSlide, 3000);
+        setTimeout(autoSlide, 6000);
     }
 
     document.getElementById('prevButton').addEventListener('click', () => moveSlide(-1));
